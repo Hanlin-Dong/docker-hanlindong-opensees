@@ -17,6 +17,8 @@ OpenSees version: 3.2.0, built on github repository commit 13a690bee050e1237bb26
 
 The docker image is created on March 24, 2020.
 
+NOTE: The OpenSees python interpreter is not included in this image.
+
 **Other versions:**
 
 2.5.0-r6258
