@@ -2,7 +2,7 @@ FROM alpine:3.11
 RUN apk update && \
     apk add sed wget bash make git gcc g++ gfortran && \
     cd /home && \
-    wget --no-check-certificate https://prdownloads.sourceforge.net/tcl/tcl8.6.10-src.tar.gz && \
+    wget --no-check-certificate https://downloads.sourceforge.net/project/tcl/Tcl/8.6.10/tcl8.6.10-src.tar.gz && \
     tar -xzvf tcl8.5.18-src.tar.gz && \
     cd /home/tcl8.5.18/unix && \
     ./configure && \

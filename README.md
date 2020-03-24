@@ -15,6 +15,8 @@ Tcl version: 8.6.10
 
 OpenSees version: 3.2.0, built on github repository commit 13a690bee050e1237bb268b4d7070bc31da9b48e
 
+The docker image is created on March 24, 2020.
+
 **Other versions:**
 
 2.5.0-r6258
