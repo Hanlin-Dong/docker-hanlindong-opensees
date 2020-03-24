@@ -4,7 +4,7 @@ RUN apk update && \
     cd /home && \
     wget --no-check-certificate https://downloads.sourceforge.net/project/tcl/Tcl/8.6.10/tcl8.6.10-src.tar.gz && \
     tar -xzvf tcl8.6.10-src.tar.gz && \
-    cd /home/tcl8.5.18/unix && \
+    cd /home/tcl8.6.10/unix && \
     ./configure && \
     make && \
     make install && \
