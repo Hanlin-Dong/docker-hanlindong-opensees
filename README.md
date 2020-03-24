@@ -11,13 +11,13 @@ You can run OpenSees or bash in the container.
 
 **Latest version:**
 
-Tcl version: 8.5.18
+Tcl version: 8.6.10
 
-OpenSees version: 2.5.0, built on svn repository revision 6258.
+OpenSees version: 3.2.0, built on github repository commit 13a690bee050e1237bb268b4d7070bc31da9b48e
 
 **Other versions:**
 
-None.
+2.5.0-r6258
 
 ## User guidelines:
 

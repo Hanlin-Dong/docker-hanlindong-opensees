@@ -1,30 +1,35 @@
-FROM alpine:3.7
-MAINTAINER Hanlin Dong <https://github.com/Hanlin-Dong>
-ENV REVISION 6258
+FROM alpine:3.11
 RUN apk update && \
-apk add sed wget bash make subversion gcc g++ gfortran && \
-cd /home && \
-mkdir OpenSees bin lib && \
-svn co -r $REVISION svn://peera.berkeley.edu/usr/local/svn/OpenSees/trunk/SRC OpenSees/SRC && \
-svn co -r $REVISION svn://peera.berkeley.edu/usr/local/svn/OpenSees/trunk/OTHER OpenSees/OTHER && \
-svn cat -r $REVISION svn://peera.berkeley.edu/usr/local/svn/OpenSees/trunk/Makefile > OpenSees/Makefile && \
-svn cat -r $REVISION svn://peera.berkeley.edu/usr/local/svn/OpenSees/trunk/MAKES/Makefile.def.EC2-UBUNTU > OpenSees/Makefile.def && \
-sed -i 's#HOME\t\t= /home/ubuntu#HOME\t\t= /home#' OpenSees/Makefile.def && \
-sed -i 's#/usr/lib/libtcl8.5.so#/usr/local/lib/libtcl8.5.so#' OpenSees/Makefile.def && \
-wget --no-check-certificate https://sourceforge.net/projects/tcl/files/Tcl/8.5.18/tcl8.5.18-src.tar.gz && \
-tar -xzvf tcl8.5.18-src.tar.gz && \
-cd /home/tcl8.5.18/unix && \
-./configure && \
-make && \
-make install && \
-cd /home/OpenSees && \
-make && \
-cd /home && \
-rm tcl8.5.18-src.tar.gz && \
-rm -r OpenSees/ && \
-rm -r tcl8.5.18/ && \
-rm -r lib/ && \
-apk del subversion make wget sed
+    apk add sed wget bash make git gcc g++ gfortran && \
+    cd /home && \
+    wget --no-check-certificate https://prdownloads.sourceforge.net/tcl/tcl8.6.10-src.tar.gz && \
+    tar -xzvf tcl8.5.18-src.tar.gz && \
+    cd /home/tcl8.5.18/unix && \
+    ./configure && \
+    make && \
+    make install && \
+    cd /home && \
+    mkdir OpenSees bin lib && \
+    cd OpenSees && \
+    git init && \
+    git remote add origin https://github.com/OpenSees/OpenSees.git && \
+    git config core.sparsecheckout true && \
+    echo "/SRC" >> .git/info/sparse-checkout && \
+    echo "/OTHER" >> .git/info/sparse-checkout && \
+    echo "/Makefile" >> .git/info/sparse-checkout && \
+    echo "/MAKES/Makefile.def.EC2-UBUNTU" >> .git/info/sparse-checkout && \
+    git pull --depth 1 origin master && \
+    cp /MAKES/Makefile.def.EC2-UBUNTU /Makefile.def && \
+    sed -i 's#INTERPRETER_LANGUAGE = PYTHON#INTERPRETER_LANGUAGE = TCL' Makefile.def && \
+    sed -i 's#HOME\t\t= ./home#HOME\t\t= /home#' Makefile.def && \
+    sed -i 's#/usr/lib/x86_64-linux-gnu/libtcl8.6.so#/usr/local/lib/libtcl8.6.so#' Makefile.def && \
+    make && \
+    cd /home && \
+    rm tcl8.6.10-src.tar.gz && \
+    rm -r OpenSees/ && \
+    rm -r tcl8.6.10/ && \
+    rm -r lib/ && \
+    apk del git make wget sed
 WORKDIR /data
 ENV PATH $PATH:/home/bin
 VOLUME ["/data"]
