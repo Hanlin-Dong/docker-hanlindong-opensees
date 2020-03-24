@@ -19,7 +19,7 @@ RUN apk update && \
     echo "/Makefile" >> .git/info/sparse-checkout && \
     echo "/MAKES/Makefile.def.EC2-UBUNTU" >> .git/info/sparse-checkout && \
     git pull --depth 1 origin master && \
-    cp /MAKES/Makefile.def.EC2-UBUNTU /Makefile.def && \
+    cp MAKES/Makefile.def.EC2-UBUNTU Makefile.def && \
     sed -i 's#INTERPRETER_LANGUAGE = PYTHON#INTERPRETER_LANGUAGE = TCL' Makefile.def && \
     sed -i 's#HOME\t\t= ./home#HOME\t\t= /home#' Makefile.def && \
     sed -i 's#/usr/lib/x86_64-linux-gnu/libtcl8.6.so#/usr/local/lib/libtcl8.6.so#' Makefile.def && \
