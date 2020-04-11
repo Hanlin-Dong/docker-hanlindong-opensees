@@ -1,4 +1,5 @@
 FROM alpine:3.11
+ENV TAG v3.2.0
 RUN apk update && \
     apk add sed wget bash make git gcc g++ gfortran && \
     cd /home && \
@@ -18,7 +19,8 @@ RUN apk update && \
     echo "/OTHER" >> .git/info/sparse-checkout && \
     echo "/Makefile" >> .git/info/sparse-checkout && \
     echo "/MAKES/Makefile.def.EC2-UBUNTU" >> .git/info/sparse-checkout && \
-    git pull --depth 1 origin master && \
+    git pull origin master --tags && \
+    git checkout $TAG && \
     cp MAKES/Makefile.def.EC2-UBUNTU Makefile.def && \
     sed -i 's#INTERPRETER_LANGUAGE = PYTHON#INTERPRETER_LANGUAGE = TCL#' Makefile.def && \
     sed -i 's#HOME\t\t= ./home#HOME\t\t= /home#' Makefile.def && \
