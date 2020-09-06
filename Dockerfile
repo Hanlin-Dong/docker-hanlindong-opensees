@@ -1,4 +1,4 @@
-FROM python:3.7.7-alpine3.11
+FROM iot83/numpy_pandas_counter_pymongo:latest
 ENV TAG v3.2.0
 RUN apk update && \
     apk add sed wget bash make git gcc g++ gfortran && \
