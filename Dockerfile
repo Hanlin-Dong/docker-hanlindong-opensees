@@ -1,13 +1,14 @@
 FROM jupyter/datascience-notebook:latest
 ENV TAG v3.2.0
-RUN cd /home/jovyan && \
+USER root
+RUN cd /home && \
     wget --no-check-certificate https://downloads.sourceforge.net/project/tcl/Tcl/8.6.10/tcl8.6.10-src.tar.gz && \
     tar -xzvf tcl8.6.10-src.tar.gz && \
-    cd /home/jovyan/tcl8.6.10/unix && \
+    cd /home/tcl8.6.10/unix && \
     ./configure && \
     make && \
     make install && \
-    cd /home/jovyan && \
+    cd /home && \
     mkdir OpenSees bin lib && \
     cd OpenSees && \
     git init && \
@@ -19,7 +20,7 @@ RUN cd /home/jovyan && \
     sed -i 's#HOME\t\t= ./home#HOME\t\t= /home#' Makefile.def && \
     sed -i 's#/usr/lib/x86_64-linux-gnu/libtcl8.6.so#/usr/local/lib/libtcl8.6.so#' Makefile.def && \
     make && \
-    cd /home/jovyan && \
+    cd /home && \
     rm tcl8.6.10-src.tar.gz && \
     rm -r tcl8.6.10/
-ENV PATH $PATH:/home/jovyan/bin
+ENV PATH $PATH:/home/bin
