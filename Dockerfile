@@ -1,4 +1,4 @@
-FROM iot83/numpy_pandas_counter_pymongo:latest
+FROM alphine:3.11
 ENV TAG v3.2.0
 RUN apk update && \
     apk add sed wget bash make git gcc g++ gfortran && \
@@ -14,6 +14,11 @@ RUN apk update && \
     cd OpenSees && \
     git init && \
     git remote add origin https://github.com/OpenSees/OpenSees.git && \
+    git config core.sparsecheckout true && \	
+    echo "/SRC" >> .git/info/sparse-checkout && \	
+    echo "/OTHER" >> .git/info/sparse-checkout && \	
+    echo "/Makefile" >> .git/info/sparse-checkout && \	
+    echo "/MAKES/Makefile.def.EC2-UBUNTU" >> .git/info/sparse-checkout && \
     git pull origin master --tags && \
     git checkout $TAG && \
     cp MAKES/Makefile.def.EC2-UBUNTU Makefile.def && \
@@ -23,8 +28,12 @@ RUN apk update && \
     make && \
     cd /home && \
     rm tcl8.6.10-src.tar.gz && \
+    rm -r OpenSees/ && \
+    rm -r tcl8.6.10/ && \	
+    rm -r lib/ && \	
+    apk del git make wget sed
     rm -r tcl8.6.10/
 WORKDIR /data
 ENV PATH $PATH:/home/bin
 VOLUME ["/data"]
-CMD ["bash"]
+CMD ["OpenSees"]
