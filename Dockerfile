@@ -1,8 +1,6 @@
-FROM iot83/numpy_pandas_counter_pymongo:latest
+FROM jupyter/datascience-notebook:latest
 ENV TAG v3.2.0
-RUN apk update && \
-    apk add sed wget bash make git gcc g++ gfortran && \
-    cd /home && \
+RUN cd /home && \
     wget --no-check-certificate https://downloads.sourceforge.net/project/tcl/Tcl/8.6.10/tcl8.6.10-src.tar.gz && \
     tar -xzvf tcl8.6.10-src.tar.gz && \
     cd /home/tcl8.6.10/unix && \
