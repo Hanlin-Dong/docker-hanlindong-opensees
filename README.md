@@ -23,6 +23,18 @@ NOTE: The OpenSees python interpreter is not included in this image.
 
 2.5.0-r6258
 
+## Tags
+
+`latest` : The minimized docker image to run OpenSees tcl interpreter.
+
+`fat` : python in included into the image.
+
+`developer` : the source code is not deleted so that developers can make new compiles.
+
+`numpy` : numpy and pandas are included into the image.
+
+`jupyter` : jupyter notebook for datascience is supported.
+
 ## User guidelines:
 
 First, install docker on your platform. See https://docs.docker.com/install/
