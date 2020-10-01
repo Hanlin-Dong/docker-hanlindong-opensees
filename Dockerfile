@@ -23,4 +23,5 @@ RUN cd /home && \
     cd /home && \
     rm tcl8.6.10-src.tar.gz && \
     rm -r tcl8.6.10/
+USER jovyan
 ENV PATH $PATH:/home/bin
