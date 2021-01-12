@@ -1,4 +1,4 @@
-FROM alphine:3.11
+FROM alpine:3.11
 ENV TAG v3.2.0
 RUN apk update && apk upgrade && \
     apk add sed wget bash make git gcc g++ gfortran tcl=8.6.10-r0 tcl-dev=8.6.10-r0 && \
