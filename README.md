@@ -20,11 +20,19 @@ NOTE: The OpenSees python interpreter is not included in these images. To run a 
 
 ## Version
 
-### latest
+### latest 3.3.0
 
 Alpine version: 3.12
 Tcl version: 8.6.10
-OpenSees version: 3.2.2, built with commit
+OpenSees version: 3.3.0, built with commit
+
+Created on August 13, 2021.
+
+### 3.2.2
+
+Alpine version: 3.12
+Tcl version: 8.6.10
+OpenSees version: 3.2.2, built with commit 5c925e6
 
 Created on January 13, 2021.
 
@@ -46,17 +54,17 @@ Created on January 13, 2021.
 
 ## Tags
 
-`latest` `slim` `slim-3.2.0` `slim-3.1.0`: The minimized docker image to run OpenSees tcl interpreter.
+`latest` `v3.3.0` `slim` `slim-v3.3.0`: The minimized docker image to run OpenSees tcl interpreter.
 
-`developer` `developer-3.2.0` `developer-3.1.0` : The source code are included in the image. Users can create their own routines to extend OpenSees. Only in this image is OpenSees compiled from source code. The compiled executable file is then copied to other images.
+`developer` `developer-v3.3.0`: The source code are included in the image. Users can create their own routines to extend OpenSees. Only in this image is OpenSees compiled from source code. The compiled executable file is then copied to other images.
 
-`jupyter` `jupyter-3.2.0` `jupyter-3.1.0` : Jupyter notebook is supported with minimal python packages.
+`jupyter` `jupyter-v3.3.0`: Jupyter notebook is supported with minimal python packages.
 
-`api` `api-3.2.0` `api-3.1.0` : API is created to run OpenSees. See [API](#API) section.
+(Under development) `api` : API is created to run OpenSees. See [API](#API) section.
 
 APIs are provided in the `api` tagged images. OpenSees can be called, and OpenSees scripts can be run by creating HTTP request.
 
-`doweltype` : OpenSees is extended with a newly developed hysteretic model for dowel-type timber joints named DowelType. The documentation see [https://github.com/Hanlin-Dong/DowelType-OpenSees](https://github.com/Hanlin-Dong/DowelType-OpenSees). Reference:
+`doweltype` `doweltype-v3.3.0` : OpenSees is extended with a newly developed hysteretic model for dowel-type timber joints named DowelType. The documentation see [https://github.com/Hanlin-Dong/DowelType-OpenSees](https://github.com/Hanlin-Dong/DowelType-OpenSees). Reference:
 
 > Hanlin Dong, Minjuan He, Xijun Wang, Constantin Christopoulos, Zheng Li, Zhan Shu. Development of a uniaxial hysteretic model for dowel-type timber joints in OpenSees. *Construction and Building Materials*, 288(2021), 123112. <https://doi.org/10.1016/j.conbuildmat.2021.123112>
 
@@ -354,5 +362,15 @@ The console outputs will be returned as well as the recorder files specified in 
 Note that the APIs are **not safe**. Users can use commands like `source`, `file` etc. Use at your own risk.
 
 ## Update history
+
+### August 13, 2021
+
+Upgrade to OpenSees v3.3.0 
+
+The automatic build for dockerhub is no longer available for free users. Therefore the images are built on my local machine.  
+
+The tags are pruned.
+
+### Initiate
 
 This repo is major updated in January 13, 2021. The tags are re-organized. All the images except `developer` tagged use pre-compiled OpenSees executable file instead of compiling. Tcl interpreter and some python packages are also installed via Alpine package manager `apk` instead of compiling from source. This results the images are smaller and more robust.
