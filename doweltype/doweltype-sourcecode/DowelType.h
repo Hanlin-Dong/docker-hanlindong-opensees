@@ -164,10 +164,14 @@ class DowelType : public UniaxialMaterial
     // loading history params
     int tPath;     // trial loading path
     double tDmin;  // trial minimum displacement in history
+    double tFdmin;  // trial force corresponding to the minimum displacement in history    
     double tDmax;  // trial maximum displacement in history
+    double tFdmax;  // trial force corresponding to the maximum displacement in history    
     int cPath;     // commited loading path
     double cDmin;  // commited minimum displacement in history
+    double cFdmin;  // commited force corresponding to the minimum displacement in history    
     double cDmax;  // commited maximum displacement in history
+    double cFdmax;  // commited force corresponding to the maximum displacement in history    
 
     // private methods
     double envelope(double disp);             // envelope curve

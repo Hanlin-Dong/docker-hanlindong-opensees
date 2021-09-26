@@ -64,11 +64,15 @@ Created on January 13, 2021.
 
 APIs are provided in the `api` tagged images. OpenSees can be called, and OpenSees scripts can be run by creating HTTP request.
 
-`doweltype` `doweltype-v3.3.0` : OpenSees is extended with a newly developed hysteretic model for dowel-type timber joints named DowelType. The documentation see [https://github.com/Hanlin-Dong/DowelType-OpenSees](https://github.com/Hanlin-Dong/DowelType-OpenSees). Reference:
+`doweltype` : OpenSees is extended with a newly developed hysteretic model for dowel-type timber joints named DowelType. The documentation can be found at [https://github.com/Hanlin-Dong/DowelType-OpenSees](https://github.com/Hanlin-Dong/DowelType-OpenSees). Reference:
 
 > Hanlin Dong, Minjuan He, Xijun Wang, Constantin Christopoulos, Zheng Li, Zhan Shu. Development of a uniaxial hysteretic model for dowel-type timber joints in OpenSees. *Construction and Building Materials*, 288(2021), 123112. <https://doi.org/10.1016/j.conbuildmat.2021.123112>
 
 OpenSees executable is compiled from the source code in the `developer` tagged images. The source code and DEVELOPER essential code are already included in these images. Developers can build dynamic linked files directly in the image. Then the developed dynamic linked files are available to all the co-workers.
+
+This tag creates a DowelType model updated on September 26, 2021. This model is slightly different from the CBM 2021 paper mentioned above. Please read the documentation in the GitHub repository carefully.
+
+`doweltype-v3.3.0` : This tag maintains the old version of DowelType, which exactly matches to the CBM 2021 paper.
 
 ## User guidelines
 
